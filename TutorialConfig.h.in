@@ -1,0 +1,20 @@
+// 两种方式都可以引入 CMakeLists.txt 中定义的变量
+#define Tutorial_VERSION_MAJOR ${Tutorial_VERSION_MAJOR}
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+
+// 无论在 CMakeLists.txt 中定义的变量是否包括双引号,在这都会变成裸字符串
+//  所以我们需要加上双引号
+#define TEST_STR1 @test_string@
+#define TEST_STR2 ${test_string}
+#define TEST_STR3 "@test_string@"
+#define TEST_STR4 "${test_string}"
+
+
+// cmakedefine 用于 configure_file() 中用于生成头文档的文档中,
+// 只有当CMakeLists.txt中的同名变量为真时才会在生成的头文档中定义,
+// 区别于 #define无论何时都会定义
+#cmakedefine test_cmakedefine_0 0
+#cmakedefine test_cmakedefine_1 1
+
+#cmakedefine USE_MYMATH
+
